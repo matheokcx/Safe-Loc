@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Utilisateur {
+  idUtilisateur Int           @id
+  mail          String
+  password      String
+  type          String
+  Logement      Logement[]
+  Avis          Avis[]
+  Reservation   Reservation[]
+}
+
+model Logement {
+  idLogement     Int           @id
+  proprietaire   Utilisateur   @relation(fields: [idProprietaire], references: [idUtilisateur])
+  idProprietaire Int
+  prixJournalier Float
+  description    String?
+  titre          String
+  Avis           Avis[]
+  Reservation    Reservation[]
+}
+
+model Avis {
+  idAvis        Int         @id
+  texte         String
+  dateAvis      DateTime
+  utilisateur   Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
+  idUtilisateur Int
+  logement      Logement    @relation(fields: [idLogement], references: [idLogement])
+  idLogement    Int
+}
+
+model Reservation {
+  idReservation Int         @id
+  utilisateur   Utilisateur @relation(fields: [idUtilisateur], references: [idUtilisateur])
+  idUtilisateur Int
+  montant       Float
+  dateDebut     DateTime
+  logement      Logement    @relation(fields: [idLogement], references: [idLogement])
+  idLogement    Int
+}
