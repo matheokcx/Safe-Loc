@@ -17,9 +17,9 @@ export default function signIn() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                mailV: valeurMail,
-                passwordV: valeurMotDePasse,
-                typeV: valeurTypeCompte
+                mailValeur: valeurMail,
+                passwordValeur: valeurMotDePasse,
+                typeValeur: valeurTypeCompte
             })
         });
 

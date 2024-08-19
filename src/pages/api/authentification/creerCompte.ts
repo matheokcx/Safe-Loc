@@ -8,6 +8,8 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         try {
             const { mailValeur, passwordValeur, typeValeur } = req.body;
 
+            console.log(mailValeur);
+
             if (mailValeur === "" || passwordValeur === "" || typeValeur === "") {
                 res.status(500).json({ message: "L'un des champs n'est pas rempli correctement" });
             }
