@@ -15,7 +15,7 @@ export default function pageDeProfil() {
                 <title>SafeLoc - {userMail}</title>
                 <link rel="icon" href="/logo.png" />
             </Head>
-            <div className="w-screen h-screen -font-sans text-black flex flex-col items-center">
+            <div className="w-screen h-screen -font-sans bg-white text-black flex flex-col items-center">
                 <TopBar mailClient={userMail as string} />
                 <div className="w-full h-1/3 flex flex-col items-center pt-16">
                     <div className="w-1/3 h-1/2 bg-gray-400 rounded-xl flex flex-col items-center pt-16">
