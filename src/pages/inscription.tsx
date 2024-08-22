@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useRouter, NextRouter } from "next/router"
 import Head from 'next/head'
 
-export default function signIn() {
+export default function inscription() {
 
     const routeur: NextRouter = useRouter();
     const [valeurMail, setValeurMail] = useState<string>("");
@@ -24,7 +24,7 @@ export default function signIn() {
         });
 
         if (requete.ok) {
-            routeur.push(`/accueil?mail=${valeurMail}`);
+            routeur.push(`/accueil?mailUtilisateur=${valeurMail}`);
         }
         else {
             const retour: any = await requete.json();

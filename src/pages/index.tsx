@@ -34,9 +34,9 @@ export default function Home() {
             <input type='password' value={valeurMotDePasse} placeholder="Votre mot de passe" onChange={(e: any) => setValeurMotDePasse(e.target.value)} className='text-black w-2/3 h-7 rounded-xl border-2 border-gray-400 p-1' />
             <button onClick={() => tenterConnexion()} className='w-1/3 h-8 rounded-xl bg-green-400 text-white font-bold transition-transform hover:-translate-y-2 hover:bg-green-600 hover:cursor-pointer'>Go</button>
           </span>
-          <Link href="/forgotPassword" >Mot de passe oublié ?</Link>
+          <Link href="/motDePasseOublie" >Mot de passe oublié ?</Link>
           <p className='text-red-500 text-sm'>{messageErreur}</p>
-          <button onClick={() => routeur.push('/signIn')} className="w-fit p-2 rounded-lg transition-colors bg-fuchsia-400 bg-opacity-55 hover:bg-opacity-100 text-white font-bold">S'inscrire'</button>
+          <button onClick={() => routeur.push('/inscription')} className="w-fit p-2 rounded-lg transition-colors bg-fuchsia-400 bg-opacity-55 hover:bg-opacity-100 text-white font-bold">S'inscrire'</button>
         </div>
       </div>
     </>

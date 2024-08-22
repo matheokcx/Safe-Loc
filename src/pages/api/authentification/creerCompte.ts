@@ -8,21 +8,10 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         try {
             const { mailValeur, passwordValeur, typeValeur } = req.body;
 
-            console.log(mailValeur);
-
             if (mailValeur === "" || passwordValeur === "" || typeValeur === "") {
-                res.status(500).json({ message: "L'un des champs n'est pas rempli correctement" });
+                res.status(500).json({ message: "L'un des champs n'est pas remplit correctement" });
             }
             else {
-                const maxIdResult = await prisma.utilisateur.findFirst({
-                    orderBy: {
-                        idUtilisateur: 'desc',
-                    },
-                    select: {
-                        idUtilisateur: true,
-                    },
-                });
-
                 const compteExiste = await prisma.utilisateur.findFirst({
                     where: {
                         mail: mailValeur
@@ -33,6 +22,14 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
                     res.status(402).json({ message: "Vous avez déjà un compte chez SafeLoc, Connectez vous !" });
                 }
                 else {
+                    const maxIdResult = await prisma.utilisateur.findFirst({
+                        orderBy: {
+                            idUtilisateur: 'desc',
+                        },
+                        select: {
+                            idUtilisateur: true,
+                        },
+                    });
                     if (maxIdResult && compteExiste == null) {
                         await prisma.utilisateur.create({
                             data: {

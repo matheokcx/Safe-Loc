@@ -7,7 +7,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     if (req.method === "GET") {
         try {
             const logements = await prisma.logement.findMany();
-
             res.status(200).json(logements);
         }
         catch (e: any) {
