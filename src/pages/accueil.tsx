@@ -36,7 +36,7 @@ export default function accueil() {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <div className=" w-screen h-screen flex flex-col items-center bg-white">
-                <TopBar mailUser={mailUtilisateur as string} />
+                <TopBar mailUser={mailUtilisateur as string} modifierLogement={setLogements} />
                 <div className=" w-full h-5/6 flex flex-col lg:flex-row items-center lg:justify-center overflow-y-auto lg:flex-wrap gap-10 pl-4 pt-8">
                     {logements.map((e: any, index) => <Logement objetLogement={e} key={index} userMail={mailUtilisateur as string} />)}
                 </div>

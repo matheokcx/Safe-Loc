@@ -4,9 +4,10 @@ import { useRouter, NextRouter } from 'next/router'
 
 interface Props {
     mailUser: string;
+    modifierLogement: any;
 }
 
-export default function TopBar({ mailUser }: Props) {
+export default function TopBar({ mailUser, modifierLogement }: Props) {
 
     const [valeurRecherche, setValeurRecherche] = useState<string>("");
     const routeur: NextRouter = useRouter();
@@ -16,6 +17,7 @@ export default function TopBar({ mailUser }: Props) {
         const retour: any = await requete.json();
         if (requete.ok) {
             // modifier la valeur du tableau des logements afficher
+            modifierLogement(retour);
         }
         else {
             alert(retour.message);
